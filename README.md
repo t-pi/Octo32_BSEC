@@ -10,6 +10,7 @@ The BSEC library is (c) by Robert Bosch GmbH / Bosch Sensortec GmbH and is avail
 Tested with BSEC_1.4.7.1_Generic_Release_20180907
 
 More informations on The Things Network: https://www.thethingsnetwork.org/
+
 Getting your devices into TTN: https://www.thethingsnetwork.org/docs/devices/
 
 # Installation
@@ -54,3 +55,15 @@ accuracy: accuracy
 
 }
 ~~~~
+
+# Output
+* temp: temperature in degree Celsius, an offset of 5°C for self-heating is set and can be changed in the code
+* hum: relative humidty in percent
+* press: ambient air pressure in mbar
+* iaq_stat: indoor air quality index, typically in the range between 25 (best air of last 4 days) and 250 (worst air of 4 days), can peak up to 500 for very bad air and get to 0 for very fresh air.
+* iaq: indoor air quality index, typically in a comparable range starting from 25 for fresh air, but not scaled to 250 for best air.
+* accuracy: accuracy of air quality index. 0 for little variations of IAQ so far, increases up to 3 with more dynamic in the measured signal (i.e. breathing on the sensor and venting the room after a while should help increase accuracy. The sensor needs also some time for warm-up after restart)
+
+# Notes
+* No storage of state so far, if node is restarted, baseline of BSEC IAQ restarts from scratch.
+* No threading yet, so every time a packet is sent the sensor idles longer than the 3 seconds the BSEC algorithm would need.
