@@ -1,5 +1,5 @@
 /*
- * Sketch: octo32_BSEC
+ * Sketch: octo32_ttn_bsec01
  * Basic sketch for Octopus32 by G. Burger, 2018
  * Initial code
  * 2018-12 G. Burger: Blinks Neopixels, scans I2C bus and connects to TTN network
